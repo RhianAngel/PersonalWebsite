@@ -166,47 +166,28 @@
 				drop-shadow(0 0 6px #ffd700);
 		}
 
-		/* ========== TABLET + PHONE (shared stacked layout) ========== */
-		/* order: name -> quote -> intro -> btn (left) + pic15 (right) */
+		/* ========== TABLET + PHONE: one column, top to bottom ========== */
+		/* order: name -> quote -> intro -> pic15 -> btn ; all stickers hidden */
 		@media (max-width: 1024px){
+
+			/* hide every decoration sticker */
+			.pic2, .pic3, .pic4, .pic5, .pic6, .pic7, .pic8,
+			.pic9, .pic10, .pic11, .pic12, .pic13{
+				display: none;
+			}
+
 			.content{
-				display: grid;
-				grid-template-columns: 1fr 1fr;
-				grid-template-areas:
-					"name  name"
-					"quote quote"
-					"intro intro"
-					"btn   pic";
-				align-content: start;
-				align-items: start;
-				column-gap: 3vw;
-				row-gap: 0;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				text-align: center;
+				gap: 14px;
 				box-sizing: border-box;
 				min-height: 100vh;
 				min-height: 100dvh;
-				padding: calc(var(--nav-h) + 30px) 16vw 40px 16vw;
+				padding: calc(var(--nav-h) + 40px) 24px 48px;
 			}
 
-			/* side stickers: scale with the screen */
-			.pic2, .pic3, .pic4, .pic5, .pic6, .pic7, .pic8,
-			.pic9, .pic10, .pic11, .pic12, .pic13{ z-index: 2; }
-
-			.pic2  { top: calc(var(--nav-h) + 10px); left: -8vw; width: 34vw; }
-			.pic10 { top: 14vh;  right: 3vw;  width: 9vw; }
-			.pic11 { top: 30vh;  right: 2vw;  width: 13vw; }
-			.pic12 { top: 55vh;  right: 2vw;  width: 16vw; }
-
-			.pic7  { top: 30vh;  left: 3vw;   width: 10vw; }
-			.pic8  { top: 40vh;  left: 3vw;   width: 9vw; }
-			.pic9  { top: 50vh;  left: 3vw;   width: 9vw; }
-			.pic6  { top: 52vh;  left: 12vw;  width: 4vw; }
-			.pic5  { top: 58vh;  left: 3vw;   width: 10vw; }
-
-			.pic3  { bottom: 2vh;  left: 0;     width: 13vw; }
-			.pic4  { bottom: 4vh;  left: 12vw;  width: 11vw; }
-			.pic13 { bottom: -2vh; right: 20vw; width: 16vw; }
-
-			/* main items become normal grid items */
 			.name, .quote, .intro, .btn, .pic15{
 				position: relative;
 				top: auto;
@@ -216,27 +197,26 @@
 				z-index: 5;
 			}
 
+			/* ---- TABLET SIZES: change these numbers to fine-tune ---- */
 			.name{
-				--nw: min(46vw, 340px);
-				grid-area: name;
-				justify-self: start;
+				--nw: min(52vw, 400px);
+				order: 1;
 				width: var(--nw);
 				margin: calc(var(--nw) * -0.20) 0 calc(var(--nw) * -0.19);
 			}
 
 			.quote{
-				--qw: min(60vw, 440px);
-				grid-area: quote;
-				justify-self: start;
+				--qw: min(66vw, 480px);
+				order: 2;
 				width: var(--qw);
 				margin: calc(var(--qw) * -0.28) 0 calc(var(--qw) * -0.44);
 			}
 
 			.intro{
-				grid-area: intro;
-				margin: 0 0 4vw;
-				text-align: left;
-				font-size: clamp(14px, 2.4vw, 22px);
+				order: 3;
+				margin: 0;
+				text-align: center;
+				font-size: clamp(16px, 2.8vw, 24px);
 				letter-spacing: 0.5px;
 				line-height: 1.5;
 				text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
@@ -244,60 +224,32 @@
 
 			.intro br{ display: none; }
 
-			/* button = LEFT */
-			.btn{
-				--bw: min(36vw, 260px);
-				grid-area: btn;
-				justify-self: start;
-				align-self: center;
-				width: var(--bw);
+			.pic15{
+				order: 4;
+				width: min(50vw, 380px);
 				margin: 0;
 			}
 
-			/* pic15 = RIGHT */
-			.pic15{
-				grid-area: pic;
-				justify-self: end;
-				align-self: start;
-				width: 100%;
-				max-width: 340px;
-				margin: 0;
+			.btn{
+				--bw: min(42vw, 300px);
+				order: 5;
+				width: var(--bw);
+				margin: calc(var(--bw) * -0.30) 0 calc(var(--bw) * -0.39);
 			}
 		}
 
-		/* ========== PHONE ONLY ========== */
+		/* ========== PHONE ONLY (smaller sizes) ========== */
 		@media (max-width: 767px){
 			.content{
-				padding: calc(var(--nav-h) + 30px) 4vw 32px 19vw;
-				column-gap: 2vw;
+				gap: 10px;
+				padding: calc(var(--nav-h) + 30px) 16px 40px;
 			}
 
-			/* smaller stickers on phone */
-			.pic2  { top: 62px; left: -12vw; width: 46vw; }
-			.pic10 { top: 76px; right: 3vw;  width: 14vw; max-width: 70px; }
-			.pic11 { top: 30vh; right: 1vw;  width: 17vw; }
-			.pic12 { top: 60vh; right: 1vw;  width: 21vw; }
-
-			.pic7  { top: 28vh; left: 3vw;  width: 14vw; }
-			.pic8  { top: 38vh; left: 3vw;  width: 13vw; }
-			.pic9  { top: 46vh; left: 3vw;  width: 13vw; }
-			.pic6  { top: 48vh; left: 15vw; width: 6vw; }
-			.pic5  { top: 55vh; left: 3vw;  width: 13vw; }
-
-			.pic3  { bottom: 2vh;  left: -2vw;  width: 20vw; }
-			.pic4  { bottom: 5vh;  left: 15vw;  width: 15vw; }
-			.pic13 { bottom: -2vh; right: 27vw; width: 22vw; }
-
-			.name  { --nw: min(46vw, 230px); }
-			.quote { --qw: min(62vw, 300px); }
-			.intro { font-size: clamp(11px, 2.9vw, 15px); }
-			.btn   { --bw: min(40vw, 190px); }
-			.pic15 { max-width: 200px; }
-		}
-
-		/* phone landscape: hide the crowded stickers */
-		@media (max-width: 767px) and (orientation: landscape){
-			.pic5, .pic6, .pic7, .pic8, .pic9, .pic11, .pic12{ display: none; }
+			.name  { --nw: min(60vw, 260px); }
+			.quote { --qw: min(78vw, 320px); }
+			.intro { font-size: clamp(12px, 3.6vw, 16px); }
+			.pic15 { width: min(56vw, 240px); }
+			.btn   { --bw: min(52vw, 210px); }
 		}
 
 		@media (prefers-reduced-motion: reduce){
