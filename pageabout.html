@@ -272,13 +272,14 @@
 		}
 
 		
-		/* for phone */
 		.me-wrap{ display: contents; }
 
-		@media (max-width: 767px){
+		/* ========== TABLET + PHONE (shared one-column layout) ========== */
+		/* these are the TABLET sizes (a little bigger); the phone block below shrinks them */
+		@media (max-width: 1024px){
 
-			/* hidden on PHONE only (767px and below). Tablet, laptop and desktop still show them.
-			   Delete a class from this list to show it on phone again. */
+			/* hidden on tablet AND phone. Laptop and desktop still show them.
+			   Delete a class from this list to show it again. */
 			.pic16,
 			.pic17,
 			.polaroid,
@@ -296,34 +297,37 @@
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-				gap: 14px;
+				gap: 20px;
 				min-height: 100%;
-				padding: calc(var(--nav-h) + 12px + 14px) 16px 28px;
+				padding: calc(var(--nav-h) + 12px + 20px) 24px 40px;
 			}
 
-			/* ---- SIZES: change these numbers to fine-tune ---- */
+			/* ---- TABLET SIZES: change these numbers to fine-tune ---- */
 			.title{
 				position: static;
-				width: min(46vw, 180px);
+				width: min(36vw, 280px);
 				transform: none;
 			}
 
 			.aboutme,
 			.interest{
-				position: static;
+				position: relative;
+				left: auto;
+				top: auto;
+				z-index: 2;
 				transform: none;
 				width: 100%;
-				max-width: 330px;
+				max-width: 560px;
 				margin: 0;
 				box-sizing: border-box;
-				padding: 10px 12px;
-				font-size: 12px;
-				line-height: 1.5;
-				letter-spacing: 0.2px;
+				padding: 16px 20px;
+				font-size: 16px;
+				line-height: 1.55;
+				letter-spacing: 0.3px;
 
 				/* soft panel so the text stays readable over the video */
 				background: rgba(0, 0, 0, 0.22);
-				border-radius: 16px;
+				border-radius: 20px;
 			}
 
 			/* let the text wrap naturally instead of using the desktop line breaks */
@@ -336,8 +340,8 @@
 			.me-wrap{
 				display: block;
 				position: relative;
-				width: min(50vw, 200px);
-				margin-top: 2px;
+				width: min(38vw, 300px);
+				margin-top: 4px;
 			}
 
 			.me{
@@ -357,11 +361,49 @@
 				left: -14%;
 			}
 
-			/* sunflower stays, small, at the bottom-right edge */
+			/* sunflower stays at the bottom-right edge, behind the text panels */
 			.sunflower{
 				display: block;
 				position: fixed;
-				z-index: 0;              /* sits behind the text panels */
+				z-index: 0;
+				bottom: 20px;
+				right: -26px;
+				width: min(22vw, 170px);
+			}
+
+			.sunflower:hover{
+				right: -26px;
+			}
+		}
+
+		/* ========== PHONE ONLY (smaller sizes) ========== */
+		@media (max-width: 767px){
+
+			.content{
+				gap: 14px;
+				padding: calc(var(--nav-h) + 12px + 14px) 16px 28px;
+			}
+
+			.title{
+				width: min(46vw, 180px);
+			}
+
+			.aboutme,
+			.interest{
+				max-width: 330px;
+				padding: 10px 12px;
+				font-size: 12px;
+				line-height: 1.5;
+				letter-spacing: 0.2px;
+				border-radius: 16px;
+			}
+
+			.me-wrap{
+				width: min(50vw, 200px);
+				margin-top: 2px;
+			}
+
+			.sunflower{
 				bottom: 14px;
 				right: -18px;
 				width: min(28vw, 110px);
@@ -369,15 +411,6 @@
 
 			.sunflower:hover{
 				right: -18px;
-			}
-
-			/* keep the text panels above the sunflower while scrolling */
-			.aboutme,
-			.interest{
-				position: relative;
-				left: auto;      /* cancel the desktop left/top offsets */
-				top: auto;
-				z-index: 2;
 			}
 		}
 
