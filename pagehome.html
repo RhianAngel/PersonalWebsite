@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Personal Website</title>
+
+	<link rel="stylesheet" href="navbar.css">
+	<script src="navbar.js" defer></script>
+
+	<style>
+
+		html, body{
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			overflow-x: hidden;
+		}
+
+		.background-video{
+			position: fixed;
+			inset: 0;
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+			z-index: -1;
+		}
+
+		.content{
+			position: relative;
+			z-index: 1;
+		}
+
+		.pic2, .pic3, .pic4, .pic5, .pic6, .pic7, .pic8, .pic9, .pic10, .pic11, .pic12, .pic13, .name {
+			transition: transform 0.3s ease;
+		}
+
+		.pic2:hover, .pic3:hover, .pic4:hover, .pic5:hover, .pic6:hover, .pic7:hover, .pic8:hover,
+		.pic9:hover, .pic10:hover, .pic11:hover, .pic12:hover, .pic13:hover{
+			animation: pop 1.2s ease;
+		}
+
+
+		.name:hover{
+			animation: fadein 3s ease 1s both, pop 1.2s ease;
+		}
+
+		@keyframes pop{
+			0% {transform: scale(1);}
+			30% {transform: scale(1.3);}
+			50% {transform: scale(0.95);}
+			70% {transform: scale(1.1);}
+			100% {transform: scale(1);}
+		}
+
+		@keyframes swing{
+			0% {transform: rotate(4deg);}
+			50% {transform: rotate(-4deg);}
+			100% {transform: rotate(4deg);}
+		}
+
+		@keyframes fadein{
+			from{opacity: 0;}
+			to{opacity: 1;}
+		}
+
+		@keyframes goldGlow {
+			0%, 100% {
+				filter:
+					drop-shadow(0 0 2px #ffd700)
+					drop-shadow(0 0 6px #ffd700);
+			}
+			50% {
+				filter:
+					drop-shadow(0 0 4px #ffe066)
+					drop-shadow(0 0 12px #ffd700)
+					drop-shadow(0 0 22px rgba(255, 190, 0, 0.9));
+			}
+		}
+
+	
+		.pic2, .pic3, .pic4, .pic5, .pic6, .pic7, .pic8,
+		.pic9, .pic10, .pic11, .pic12, .pic13, .pic15{
+			position: fixed;
+			height: auto;
+			z-index: 5;
+		}
+
+		.pic2 { top: calc(-40 * var(--u));  left: calc(-120 * var(--u)); width: calc(480 * var(--u) * var(--s)); }
+		.pic3 { bottom: calc(15 * var(--u)); left: calc(-5 * var(--u));  width: calc(150 * var(--u) * var(--s)); }
+		.pic4 { bottom: calc(40 * var(--u)); left: calc(125 * var(--u)); width: calc(120 * var(--u) * var(--s)); }
+		.pic5 { top: calc(320 * var(--u));  left: calc(90 * var(--u));   width: calc(120 * var(--u) * var(--s)); }
+		.pic6 { top: calc(280 * var(--u));  left: calc(200 * var(--u));  width: calc(50 * var(--u) * var(--s)); }
+		.pic7 { top: calc(160 * var(--u));  left: calc(50 * var(--u));   width: calc(100 * var(--u) * var(--s)); }
+		.pic8 { top: calc(220 * var(--u));  left: calc(60 * var(--u));   width: calc(90 * var(--u) * var(--s)); }
+		.pic9 { top: calc(270 * var(--u));  left: calc(70 * var(--u));   width: calc(90 * var(--u) * var(--s)); }
+
+		.pic10 { top: calc(70 * var(--u));  right: calc(40 * var(--u));  width: calc(100 * var(--u) * var(--s)); }
+		.pic11 { top: calc(180 * var(--u)); right: calc(20 * var(--u));  width: calc(170 * var(--u) * var(--s)); }
+		.pic12 { top: calc(350 * var(--u)); right: calc(20 * var(--u));  width: calc(200 * var(--u) * var(--s)); }
+		.pic13 { bottom: calc(-80 * var(--u)); right: calc(190 * var(--u)); width: calc(200 * var(--u) * var(--s)); }
+
+		.pic15{
+			bottom: calc(90 * var(--u));
+			right: calc(130 * var(--u));
+			width: calc(450 * var(--u) * var(--s));
+			transform-origin: top center;
+			animation: swing 4s ease-in-out infinite;
+		}
+
+		.name{
+			position: fixed;
+			top: calc(25 * var(--u));
+			left: calc(275 * var(--u));
+			width: calc(340 * var(--u));
+			height: auto;
+			animation: fadein 3s ease 1s both;
+			z-index: 5;
+		}
+
+		.intro{
+			position: fixed;
+			top: calc(350 * var(--u));
+			left: calc(300 * var(--u));
+			margin: 0;
+			color: white;
+			font-family: 'Ink Free', cursive;
+			font-weight: bold;
+			letter-spacing: 1.5px;
+			z-index: 5;
+			animation: fadein 3s ease 1s both;
+			font-size: max(11px, calc(17.6 * var(--u)));
+			line-height: 1.6;
+		}
+
+		.quote{
+			position: fixed;
+			top: calc(200 * var(--u));
+			left: calc(280 * var(--u));
+			width: calc(300 * var(--u));
+			height: auto;
+			z-index: 5;
+			animation: fadein 3s ease 1s both;
+		}
+
+		.btn{
+			position: fixed;
+			bottom: calc(-40 * var(--u));
+			left: calc(270 * var(--u));
+			width: calc(250 * var(--u));
+			height: auto;
+			z-index: 5;
+			transition: transform 0.3s ease, filter 0.3s ease;
+			cursor: pointer;
+		}
+
+		.btn:hover{
+			transform: scale(1.05);
+			animation: goldGlow 1.5s ease-in-out infinite;
+		}
+
+		.btn:active{
+			transform: scale(0.97);
+			filter:
+				drop-shadow(0 0 2px #ffd700)
+				drop-shadow(0 0 6px #ffd700);
+		}
+
+		/* for phone */
+		@media (max-width: 767px){
+			.content{
+				display: grid;
+				grid-template-columns: minmax(0, 1fr) 32vw;
+				grid-template-areas:
+					"name  name"
+					"quote pic"
+					"intro pic"
+					"btn   pic";
+				grid-template-rows: auto auto auto 1fr;
+				align-content: start;
+				column-gap: 2vw;
+				row-gap: 0;
+				box-sizing: border-box;
+				min-height: 100vh;
+				min-height: 100dvh;
+				padding: calc(var(--nav-h) + 30px) 4vw 32px 19vw;
+			}
+			
+
+			.pic2, .pic3, .pic4, .pic5, .pic6, .pic7, .pic8,
+			.pic9, .pic10, .pic11, .pic12, .pic13{ z-index: 2; }
+
+			.pic2  { top: 62px;   left: -12vw; width: 46vw; }
+			.pic10 { top: 76px;   right: 3vw;  width: 14vw; max-width: 70px; }
+			.pic11 { top: 30vh;   right: 1vw;  width: 17vw; }
+			.pic12 { top: 60vh;   right: 1vw;  width: 21vw; }
+
+			
+			.pic7  { top: 28vh;   left: 3vw;   width: 14vw; }
+			.pic8  { top: 38vh;   left: 3vw;   width: 13vw; }
+			.pic9  { top: 46vh;   left: 3vw;   width: 13vw; }
+			.pic6  { top: 48vh;   left: 15vw;  width: 6vw; }
+			.pic5  { top: 55vh;   left: 3vw;   width: 13vw; }
+
+			
+			.pic3 {
+			bottom: 2vh; 
+			left: -2vw; 
+			width: 20vw; 
+			}
+			
+			.pic4  { 
+			bottom: 5vh;  
+			left: 15vw;
+			width: 15vw; 
+			}
+			
+			.pic13 { bottom: -2vh; right: 27vw; width: 22vw; }
+
+			
+			.name, .quote, .intro, .btn, .pic15{
+				position: relative;
+				top: auto;
+				left: auto;
+				right: auto;
+				bottom: auto;
+				z-index: 5;
+			}
+
+			
+			.name{
+				--nw: min(46vw, 230px);
+				grid-area: name;
+				justify-self: start;
+				width: var(--nw);
+				margin: calc(var(--nw) * -0.20) 0 calc(var(--nw) * -0.19);
+			}
+
+			.quote{
+				grid-area: quote;
+				width: 100%;
+				margin: -28% 0 -44%;
+			}
+
+			.intro{
+				grid-area: intro;
+				margin: 0;
+				text-align: left;
+				font-size: clamp(11px, 2.6vw, 15px);
+				letter-spacing: 0.5px;
+				line-height: 1.5;
+				text-wrap: balance;
+				text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+			}
+
+			
+			.intro br{ display: none; }
+
+			.btn{
+				--bw: min(40vw, 190px);
+				grid-area: btn;
+				justify-self: start;
+				align-self: start;
+				width: var(--bw);
+				margin: calc(var(--bw) * -0.30) 0 calc(var(--bw) * -0.39);
+			}
+
+			
+			.pic15{
+				grid-area: pic;
+				align-self: start;
+				justify-self: center;
+				width: 100%;
+				max-width: 240px;
+				margin-top: 2vw;
+			}
+		}
+
+		/* for phone */
+		@media (max-width: 767px) and (orientation: landscape){
+			.pic5, .pic6, .pic7, .pic8, .pic9, .pic11, .pic12{ display: none; }
+		}
+
+		@media (prefers-reduced-motion: reduce){
+			.pic15{ animation: none; transform: none; }
+			.btn:hover{ animation: none; }
+		}
+		
+		.btn-link{ display: contents; }
+	</style>
+</head>
+<body>
+
+
+
+	<div>
+		<video autoplay muted loop playsinline class="background-video">
+			<source src="complete-bg.mp4" type="video/mp4">
+			Your browser does not support the background video.
+		</video>
+	</div>
+
+	<div class="content">
+		<img src="2.png" class="pic2" alt="Decoration">
+		<img src="pic3.png" class="pic3" alt="Decoration">
+		<img src="pic4.png" class="pic4" alt="Decoration">
+		<img src="pic5.png" class="pic5" alt="Decoration">
+		<img src="pic6.png" class="pic6" alt="Decoration">
+		<img src="pic7.png" class="pic7" alt="Decoration">
+		<img src="pic8.png" class="pic8" alt="Decoration">
+		<img src="9.png" class="pic9" alt="Decoration">
+		<img src="pic10.png" class="pic10" alt="Decoration">
+		<img src="pic11.png" class="pic11" alt="Decoration">
+		<img src="pic12.png" class="pic12" alt="Decoration">
+		<img src="pic13.png" class="pic13" alt="Decoration">
+		<img src="pic15.png" class="pic15" alt="Main design">
+
+		<img src="name.png" class="name" alt="Rhian Angel">
+
+		<img src="quote.png" class="quote" alt="Quote">
+		<p class="intro">
+			I turn little ideas into art <br>
+			through colors, stitches, programming <br>
+			and a whole lot of imagination.
+		</p>
+
+		<a href="portfolio.html" class="btn-link">
+			<img src="btn.png" class="btn" alt="Explore">
+		</a>
+	</div>
+
+</body>
+</html>

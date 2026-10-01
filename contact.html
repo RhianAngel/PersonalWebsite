@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Contact</title>
+
+	<!-- shared navbar: same 2 lines on EVERY page -->
+	<link rel="stylesheet" href="navbar.css">
+	<script src="navbar.js" defer></script>
+
+	<style>
+		html, body{ margin: 0; padding: 0; height: 100%; overflow-x: hidden; }
+
+		.background-video{
+			position: fixed;
+			inset: 0;
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+			z-index: -1;
+		}
+		
+		.contact{
+			position: fixed;
+			height: auto;
+			z-index: 4;
+			top: calc(45 * var(--u));
+			left: calc(350 * var(--u));
+			width: calc(600 * var(--u) * var(--s));
+		}
+		
+		@keyframes pop{
+			0% {transform: scale(1);}
+			30% {transform: scale(1.3);}
+			50% {transform: scale(0.95);}
+			70% {transform: scale(1.1);}
+			100% {transform: scale(1);}
+		}
+		
+		.contact:hover{
+			animation: pop 1.2s ease;
+		}
+		
+		.dried{
+			position: fixed;
+			height: auto;
+			z-index: 4;
+			top: calc(60 * var(--u));
+			right: calc(430 * var(--u));
+			width: calc(150 * var(--u) * var(--s));
+		}
+
+		.dried:hover{
+			animation: slideRightBack 1s ease-in-out;
+		}
+
+		@keyframes slideRightBack{
+			0%, 100%{ transform: translateX(0); }
+			50%{ transform: translateX(calc(80 * var(--u))); }
+		}
+		
+		.cheader{
+			position: fixed;
+			height: auto;
+			z-index: 4;
+			top: calc(-10 * var(--u));
+			left: calc(20 * var(--u));
+			width: calc(400 * var(--u) * var(--s));
+			transition: transform 0.3s ease;
+		}
+		
+		.cheader:hover{
+			animation: pop 1.2s ease;
+		}
+		
+		.sunflower{
+			position: fixed;
+			height: auto;
+			z-index: 4;
+			bottom: calc(-10 * var(--u));
+			left: calc(50 * var(--u));
+			width: calc(320 * var(--u) * var(--s));
+			transition: left 0.3s ease;
+		}
+		
+		.sunflower:hover{
+			left: calc(30 * var(--u));
+		}
+		
+		.heart{
+			position: fixed;
+			height: auto;
+			z-index: 5;
+			bottom: calc(-10 * var(--u));
+			left: calc(20 * var(--u));
+			width: calc(180 * var(--u) * var(--s));
+			transition: left 0.4s ease;
+		}
+		
+		.heart:hover{
+			left: calc(-10 * var(--u));
+		}
+		
+		.lastnote{
+			position: fixed;
+			height: auto;
+			z-index: 4;
+			top: calc(200 * var(--u));
+			right: calc(150 * var(--u));
+			width: calc(150 * var(--u) * var(--s));
+			transition: right 0.3s ease;
+		}
+		
+		.lastnote:hover{
+			right: calc(120 * var(--u));
+		}
+
+		@media (max-width: 768px){
+
+			/* let the page scroll normally */
+			html, body{
+				height: auto;
+				min-height: 100%;
+			}
+
+			.dried, .sunflower, .heart, .lastnote{
+				display: none;
+			}
+
+			.content{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 16px;
+				box-sizing: border-box;
+				padding: 90px 16px 40px;   
+			}
+
+			.content img.cheader,
+			.content img.contact{
+				position: static;
+				top: auto;
+				right: auto;
+				bottom: auto;
+				left: auto;
+				z-index: auto;
+				height: auto;
+			}
+
+			.content img.cheader{
+				order: 0;
+				width: 70%;
+				max-width: 320px;
+			}
+
+			.content img.contact{
+				order: 1;
+				width: 95%;
+				max-width: 500px;
+			}
+		}
+		
+	
+		@media (min-width: 769px) and (max-width: 1024px){
+
+		.cheader{
+			width: calc(300 * var(--u) * var(--s));
+		}
+
+		.contact{
+			left: 50%;
+			transform: translateX(-50%);
+			top: calc(70 * var(--u));
+			width: calc(500 * var(--u) * var(--s));
+		}
+
+		
+		.dried{
+			width: calc(110 * var(--u) * var(--s));
+			right: calc(60 * var(--u));
+		}
+
+		.lastnote{
+			width: calc(110 * var(--u) * var(--s));
+			right: calc(40 * var(--u));
+		}
+
+		.sunflower{
+			width: calc(240 * var(--u) * var(--s));
+		}
+
+		.heart{
+			width: calc(140 * var(--u) * var(--s));
+		}
+	}
+	</style>
+</head>
+<body>
+	
+
+	<div>
+		<video autoplay muted loop playsinline class="background-video">
+			<source src="complete-bg.mp4" type="video/mp4">
+		</video>
+	</div>
+
+	<main class="content">
+		<img src="contact.png" class="contact" alt="contact">
+		<img src="dried.png" class="dried" alt="dried">
+		<img src="cheader.png" class="cheader" alt="cheader">
+		<img src="sunflower.png" class="sunflower" alt="sunflower">
+		<img src="heart.png" class="heart" alt="heart">
+		<img src="lastnote.png" class="lastnote" alt="lastnote">
+	</main>
+</body>
+</html>

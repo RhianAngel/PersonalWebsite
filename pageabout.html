@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>About Me</title>
+
+	<!-- shared navbar (also gives --u, --s and --nav-h): same 2 lines on EVERY page -->
+	<link rel="stylesheet" href="navbar.css">
+	<script src="navbar.js" defer></script>
+
+	<style>
+
+		html, body{
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			overflow-x: hidden;
+		}
+
+		
+		.background-video{
+			position: fixed;
+			inset: 0;
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+			z-index: -1;
+		}
+
+		
+		.content{
+			position: relative;
+			z-index: 1;
+			box-sizing: border-box;
+			padding: calc(var(--nav-h) + 60px) 5vw 40px;
+			color: white;
+			font-family: 'Ink Free', cursive;
+		}
+
+		.me { 
+			position: fixed;
+			height: auto;
+			z-index: 5;
+			bottom: calc(130 * var(--u));
+			left: calc(10 * var(--u));
+			width: calc(400 * var(--u) * var(--s));
+			transform-origin: top center;
+			transition: transform 0.3s ease;
+		}
+		
+		@keyframes pop {
+			0%   { transform: scale(1); }
+			30%  { transform: scale(1.03); }
+			50%  { transform: scale(1.06); }
+			70%  { transform: scale(1.03); }
+			100% { transform: scale(1); }
+		}
+
+		
+		.me:hover, .note2:hover{
+			animation: pop 1.2s ease;
+		}
+		
+
+		.pic16{
+			position: fixed;                               
+			height: auto;
+			z-index: 5;
+			bottom: calc(-250 * var(--u));                  
+			left: calc(350 * var(--u));
+			width: calc(500 * var(--u) * var(--s));
+			transition: bottom 0.4s ease;
+		}
+		
+		.pic16:hover{
+			bottom: calc(-280 * var(--u));
+		}
+		
+		.pic17{
+			position: fixed;                               
+			height: auto;
+			z-index: 5;
+			top: calc(120 * var(--u));                  
+			left: calc(1 * var(--u));
+			width: calc(150 * var(--u) * var(--s));
+			transition: left 0.4s ease;
+			
+		}
+		
+		.pic17:hover{
+			left: calc(-30 * var(--u));
+		}
+		
+		.heart{
+			position: fixed;                               
+			height: auto;
+			z-index: 8;   /* above polaroid and note */
+			bottom: calc(90 * var(--u));                  
+			left: calc(60 * var(--u));
+			width: calc(150 * var(--u) * var(--s));
+			transition: left 0.4s ease;
+		}
+		
+		.heart:hover{
+			left: calc(10 * var(--u));
+		}
+		
+		.polaroid{
+			position: fixed;                               
+			height: auto;
+			z-index: 5;
+			bottom: calc(10 * var(--u));                  
+			left: calc(-80 * var(--u));
+			width: calc(250 * var(--u) * var(--s));
+			transition: left 0.4s ease;
+		}
+		
+		.polaroid:hover{
+			left: calc(-110 * var(--u));
+		}
+		
+		.note{
+			position: fixed;                               
+			height: auto;
+			z-index: 7;
+			bottom: calc(200 * var(--u));                  
+			left: calc(-20 * var(--u));
+			width: calc(150 * var(--u) * var(--s));
+			transition: left 0.4s ease;
+		}
+		
+		.note:hover{
+			left: calc(-35 * var(--u));
+		}
+		
+		.note2{
+			position: fixed;                               
+			height: auto;
+			z-index: 5;                
+			top: calc(30 * var(--u));                  
+			right: calc(250 * var(--u));
+			width: calc(250 * var(--u) * var(--s));
+			transition: transform 0.3s ease;
+		}
+		
+		.sunflower{
+			position: fixed;                               
+			height: auto;
+			z-index: 5;                
+			bottom: calc(50 * var(--u));                  
+			right: calc(-150 * var(--u));
+			width: calc(350 * var(--u) * var(--s));
+			transition: right 0.3s ease;
+		}
+		
+		.sunflower:hover{
+			right: calc(-180 * var(--u));
+		}
+		
+		.painting{
+			position: fixed;                               
+			height: auto;
+			z-index: 5;                
+			top: calc(30 * var(--u));                  
+			right: calc(20 * var(--u));
+			width: calc(200 * var(--u) * var(--s));
+			transition: right 0.3s ease;
+		}
+		
+		.painting:hover{
+			right: calc(-1 * var(--u));
+		}
+		
+		.paint{
+			position: fixed;                               
+			height: auto;
+			z-index: 5;                
+			bottom: calc(1 * var(--u));                  
+			right: calc(80 * var(--u));
+			width: calc(180 * var(--u) * var(--s));
+			transition: right 0.3s ease;
+		}
+		
+		.paint:hover{
+			right: calc(50 * var(--u));
+		}
+		
+		.starnote{
+			position: fixed;                               
+			height: auto;
+			z-index: 5;                
+			bottom: calc(40 * var(--u));                  
+			right: calc(230 * var(--u));
+			width: calc(130 * var(--u) * var(--s));
+			transition: right 0.3s ease;
+		}
+		
+		.starnote:hover{
+			right: calc(200 * var(--u));
+		}
+		
+		.title { 
+			position: fixed;
+			height: auto;
+			z-index: 5;
+			top: calc(25 * var(--u));
+			left: calc(350 * var(--u));
+			width: calc(300 * var(--u) * var(--s));
+			transform-origin: top center;
+			animation: fadein 3s ease 1s both;
+		}
+		
+		@keyframes fadein{
+			from{opacity: 0;}
+			to{opacity: 1;}
+		}
+		
+		.aboutme {
+			grid-area: intro;
+			width: 90%;
+			max-width: 550px;
+			margin: 120px auto 0;
+			
+			text-align: center;
+			font-size: clamp(11px, 2.6vw, 15px);
+			font-weight: bold;
+			letter-spacing: 0.5px;
+			line-height: 1.5;
+			text-wrap: balance;
+			text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+			transform: translateX(calc(-80 * var(--u)));
+			
+			animation: fadein 3s ease 1s both;
+		}
+		
+		.rhian{
+			position: fixed;                               
+			height: auto;
+			z-index: 5;
+			bottom: calc(80 * var(--u));                  
+			left: calc(350 * var(--u));
+			width: calc(150 * var(--u) * var(--s));
+			transition: bottom 0.4s ease;
+			
+			text-shadow: 
+			calc(2 * var(--u)) 
+			calc(2 * var(--u)) 
+			calc(5 * var(--u)) 
+			rgba(0, 0, 0, 0.8);
+		}
+			
+		.interest {
+			position: absolute;
+
+			width: 300px;
+			max-width: 30%;
+
+			left: 65%;
+			top: 60%;
+
+			text-align: center;
+			font-size: clamp(11px, 2.6vw, 15px);
+			font-weight: bold;
+			line-height: 1.5;
+			text-wrap: balance;
+
+			text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+
+			animation: fadein 3s ease 1s both;
+		}
+
+		
+		/* for phone */
+		.me-wrap{ display: contents; }
+
+		@media (max-width: 767px){
+
+			/* hidden on PHONE only (767px and below). Tablet, laptop and desktop still show them.
+			   Delete a class from this list to show it on phone again. */
+			.pic16,
+			.pic17,
+			.polaroid,
+			.note,
+			.note2,
+			.painting,
+			.paint,
+			.starnote,
+			.rhian{
+				display: none !important;
+			}
+
+			/* one centered column */
+			.content{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 14px;
+				min-height: 100%;
+				padding: calc(var(--nav-h) + 12px + 14px) 16px 28px;
+			}
+
+			/* ---- SIZES: change these numbers to fine-tune ---- */
+			.title{
+				position: static;
+				width: min(46vw, 180px);
+				transform: none;
+			}
+
+			.aboutme,
+			.interest{
+				position: static;
+				transform: none;
+				width: 100%;
+				max-width: 330px;
+				margin: 0;
+				box-sizing: border-box;
+				padding: 10px 12px;
+				font-size: 12px;
+				line-height: 1.5;
+				letter-spacing: 0.2px;
+
+				/* soft panel so the text stays readable over the video */
+				background: rgba(0, 0, 0, 0.22);
+				border-radius: 16px;
+			}
+
+			/* let the text wrap naturally instead of using the desktop line breaks */
+			.aboutme br,
+			.interest br{
+				display: none;
+			}
+
+			/* me.png with heart.png tucked at its bottom-left corner */
+			.me-wrap{
+				display: block;
+				position: relative;
+				width: min(50vw, 200px);
+				margin-top: 2px;
+			}
+
+			.me{
+				position: static;
+				display: block;
+				width: 100%;
+			}
+
+			.heart{
+				position: absolute;
+				left: -14%;
+				bottom: -4%;
+				width: 42%;
+			}
+
+			.heart:hover{
+				left: -14%;
+			}
+
+			/* sunflower stays, small, at the bottom-right edge */
+			.sunflower{
+				display: block;
+				position: fixed;
+				z-index: 0;              /* sits behind the text panels */
+				bottom: 14px;
+				right: -18px;
+				width: min(28vw, 110px);
+			}
+
+			.sunflower:hover{
+				right: -18px;
+			}
+
+			/* keep the text panels above the sunflower while scrolling */
+			.aboutme,
+			.interest{
+				position: relative;
+				left: auto;      /* cancel the desktop left/top offsets */
+				top: auto;
+				z-index: 2;
+			}
+		}
+
+		/* very small phones */
+		@media (max-width: 380px){
+			.aboutme,
+			.interest{
+				font-size: 11.5px;
+				padding: 9px 11px;
+			}
+		}
+
+		/* phone turned sideways: less vertical room, so keep images smaller */
+		@media (max-width: 767px) and (orientation: landscape){
+			.title{ width: min(24vw, 150px); }
+			.me-wrap{ width: min(28vw, 170px); }
+		}
+	</style>
+</head>
+
+<body>
+
+	<!-- no navbar code needed here, navbar.js adds it -->
+
+	<div>
+		<video autoplay muted loop playsinline class="background-video">
+			<source src="complete-bg.mp4" type="video/mp4">
+			Your browser does not support the background video.
+		</video>
+	</div>
+
+	<main class="content">
+		<img src="title.png" class="title" alt="title">
+
+		<p class="aboutme">
+			Hi, I am Rhian Angel! I’m a creative and passionate <br>
+			individual who loves expressing ideas through art and design.<br>
+			I enjoy exploring colors, creativity, and new ways to <br>
+			bring ideas to life. As an aspiring front-end web <br>
+			developer, I’m passionate about combining my love <br>
+			for art with technology to create beautiful,<br>
+			engaging, and meaningful digital experiences.
+		</p>
+
+		<p class="interest">
+			I enjoy exploring different forms of creativity <br>
+			and self-expression. My interests include <br>
+			modeling, art, reading books, and web design, <br>
+			where I can express my ideas, discover <br>
+			new perspectives, and create something <br>
+			meaningful.
+		</p>
+
+		<div class="me-wrap">
+			<img src="me.png" class="me" alt="Main design">
+			<img src="heart.png" class="heart" alt="heart">
+		</div>
+		<img src="pic16.png" class="pic16" alt="pic16">
+		<img src="pic17.png" class="pic17" alt="pic17">
+		<img src="polaroid.png" class="polaroid" alt="polaroid">
+		<img src="note.png" class="note" alt="note">
+		<img src="note2.png" class="note2" alt="note2">
+		<img src="sunflower.png" class="sunflower" alt="sunflower">
+		<img src="painting.png" class="painting" alt="painting">
+		<img src="paint.png" class="paint" alt="paint">
+		<img src="starnote.png" class="starnote" alt="starnote">
+		<img src="rhian.png" class="rhian" alt="rhian">
+	</main>
+
+</body>
+</html>

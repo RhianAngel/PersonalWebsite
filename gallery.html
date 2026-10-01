@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gallery</title>
+
+	
+	<link rel="stylesheet" href="navbar.css">
+	<script src="navbar.js" defer></script>
+
+	<style>
+		html, body{ margin: 0; padding: 0; height: 100%; overflow-x: hidden; }
+
+		.background-video{
+			position: fixed;
+			inset: 0;
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+			z-index: -1;
+		}
+		
+		.g1{
+			position: fixed;
+			height: auto;
+			z-index: 4;
+			top: calc(50 * var(--u));
+			left: calc(100 * var(--u));
+			width: calc(350 * var(--u) * var(--s));
+			transition: transform 0.3s ease;
+		}
+
+		.g2{
+			position: fixed;
+			height: auto;
+			z-index: 5;
+			bottom: calc(-10 * var(--u));
+			left: calc(250 * var(--u));
+			width: calc(300 * var(--u) * var(--s));
+			transition: transform 0.3s ease;
+		}
+		
+		.g3{
+			position: fixed;
+			height: auto;
+			z-index: 6;
+			bottom: calc(-10 * var(--u));
+			left: calc(500 * var(--u));
+			width: calc(350 * var(--u) * var(--s));
+			transition: transform 0.3s ease;
+		}
+		
+		.g4{
+			position: fixed;
+			height: auto;
+			z-index: 5;
+			top: calc(50 * var(--u));
+			left: calc(350 * var(--u));
+			width: calc(350 * var(--u) * var(--s));
+			transition: transform 0.3s ease;
+		}
+		
+		.g5{
+			position: fixed;
+			height: auto;
+			z-index: 7;
+			top: calc(50 * var(--u));
+			right: calc(300 * var(--u));
+			width: calc(350 * var(--u) * var(--s));
+			transition: transform 0.3s ease;
+		}
+		
+		.g6{
+			position: fixed;
+			height: auto;
+			z-index: 7;
+			bottom: calc(-10 * var(--u));
+			right: calc(160 * var(--u));
+			width: calc(350 * var(--u) * var(--s));
+			transition: transform 0.3s ease;
+		}
+		
+		.bottom{
+			position: fixed;
+			height: auto;
+			z-index: 4;
+			bottom: calc(-10 * var(--u));
+			left: calc(-10 * var(--u));
+			width: calc(700 * var(--u) * var(--s));
+		}
+		
+		.rhia{
+			position: fixed;
+			height: auto;
+			z-index: 4;
+			top: calc(20 * var(--u));
+			right: calc(20 * var(--u));
+			width: calc(350 * var(--u) * var(--s));
+			transition: transform 0.3s ease;
+		}
+		
+		@keyframes pop{
+			0% {transform: scale(1);}
+			30% {transform: scale(1.3);}
+			50% {transform: scale(0.95);}
+			70% {transform: scale(1.1);}
+			100% {transform: scale(1);}
+		}
+
+		.rhia:hover, .g1:hover, .g2:hover, .g3:hover, .g4:hover, .g5:hover, .g6:hover{
+			animation: pop 1.2s ease;
+		}
+		
+		.gnote{
+			position: fixed;
+			height: auto;
+			z-index: 4;
+			top: calc(-40 * var(--u));
+			left: calc(-30 * var(--u));
+			width: calc(200 * var(--u) * var(--s));
+		}
+
+		.gnote:hover{
+			animation: slideLeftBack 1s ease-in-out;
+		}
+
+		@keyframes slideLeftBack{
+			0%, 100%{ transform: translateX(0); }
+			50%{ transform: translateX(calc(-50 * var(--u))); }
+		}
+		
+		.vinyl{
+			position: fixed;
+			height: auto;
+			z-index: 4;
+			bottom: calc(50 * var(--u));
+			right: calc(-70 * var(--u));
+			width: calc(250 * var(--u) * var(--s));
+			transform-origin: center;
+			animation: spin 20s linear infinite;
+		}
+		
+		@keyframes spin{
+			from{ transform: rotate(0deg); }
+			to{ transform: rotate(360deg); }
+		}
+		
+		.arm{
+			position: fixed;
+			height: auto;
+			z-index: 4;
+			bottom: calc(-10 * var(--u));
+			right: calc(-400 * var(--u));
+			width: calc(900 * var(--u) * var(--s));
+			transition: transform 0.3s ease;
+		}
+		
+		.night{
+			position: fixed;
+			height: auto;
+			z-index: 4;
+			top: calc(150 * var(--u));
+			left: calc(-80 * var(--u));
+			width: calc(250 * var(--u) * var(--s));
+		}
+		
+		.night:hover{
+			animation: slideLeftBack 1s ease-in-out;
+		}
+
+	
+		@media (max-width: 768px){
+
+			/* let the page scroll normally */
+			html, body{
+				height: auto;
+				min-height: 100%;
+			}
+
+		
+			.bottom, .gnote, .vinyl, .arm, .night{
+				display: none;
+			}
+
+
+			.content{
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 16px 12px;
+				align-items: center;
+				justify-items: center;
+				box-sizing: border-box;
+				padding: 90px 16px 40px;   
+			}
+
+
+			.content img{
+				position: static;
+				top: auto;
+				right: auto;
+				bottom: auto;
+				left: auto;
+				z-index: auto;
+				width: 100%;
+				max-width: 100%;
+				height: auto;
+			}
+
+	
+			.content img.rhia{
+				grid-column: 1 / -1;
+				width: 70%;
+				max-width: 320px;
+				margin-bottom: 8px;
+			}
+
+
+			.content img.rhia{ order: 0; }
+			.content img.g1,
+			.content img.g2,
+			.content img.g3,
+			.content img.g4,
+			.content img.g5,
+			.content img.g6{
+				order: 1;
+			}
+		}
+	</style>
+</head>
+<body>
+
+	<div>
+		<video autoplay muted loop playsinline class="background-video">
+			<source src="complete-bg.mp4" type="video/mp4">
+		</video>
+	</div>
+
+	<main class="content">
+		<img src="g1.png" class="g1" alt="g1">
+		<img src="g2.png" class="g2" alt="g2">
+		<img src="g3.png" class="g3" alt="g3">
+		<img src="g4.png" class="g4" alt="g4">
+		<img src="g5.png" class="g5" alt="g5">
+		<img src="g6.png" class="g6" alt="g6">
+		<img src="bottom.png" class="bottom" alt="bottom">
+		<img src="rhia.png" class="rhia" alt="rhia">
+		<img src="gnote.png" class="gnote" alt="gnote">
+		<img src="vinyl.png" class="vinyl" alt="vinyl">
+		<img src="arm.png" class="arm" alt="arm">
+		<img src="night.png" class="night" alt="night">
+	</main>
+</body>
+</html>

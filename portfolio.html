@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Portfolio</title>
+
+	<link rel="stylesheet" href="navbar.css">
+	<script src="navbar.js" defer></script>
+
+	<style>
+		html, body{ margin: 0; padding: 0; height: 100%; overflow-x: hidden; }
+
+		.background-video{
+			position: fixed;
+			inset: 0;
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+			z-index: -1;
+		}
+
+		.flower{
+			position: fixed;
+			height: auto;
+			z-index: 5;
+			bottom: calc(-100 * var(--u));
+			left: calc(-90 * var(--u));
+			width: calc(300 * var(--u) * var(--s));
+		    transition: left 0.4s ease;
+		}
+
+		.flower:hover{
+			left: calc(-110 * var(--u));
+		}
+		
+		.picnote{
+			position: fixed;
+			height: auto;
+			z-index: 4;
+			bottom: calc(-20 * var(--u));
+			left: calc(110 * var(--u));
+			width: calc(200 * var(--u) * var(--s));
+		    transition: left 0.4s ease;
+		}
+		
+		.picnote:hover{
+			left: calc(90 * var(--u));
+		}
+		
+		.header{
+			position: fixed;
+			height: auto;
+			z-index: 4;
+			top: calc(-10 * var(--u));
+			left: calc(20 * var(--u));
+			width: calc(400 * var(--u) * var(--s));
+			transition: transform 0.3s ease;
+		}
+		
+		@keyframes pop {
+			0%   { transform: scale(1); }
+			30%  { transform: scale(1.03); }
+			50%  { transform: scale(1.06); }
+			70%  { transform: scale(1.03); }
+			100% { transform: scale(1); }
+		}
+
+		.header:hover{
+			animation: pop 1.2s ease;
+		}
+		
+		.laptop{
+			position: fixed;
+			height: auto;
+			z-index: 4;
+			bottom: calc(140 * var(--u));
+			left: calc(40 * var(--u));
+			width: calc(250 * var(--u) * var(--s));
+			transition: left 0.4s ease;
+		}
+		
+		.laptop:hover{
+			left: calc(10 * var(--u));
+		}
+		
+		.perwebicon{
+			position: fixed;
+			height: auto;
+			z-index: 4;
+			top: calc(80 * var(--u));
+			left: calc(400 * var(--u));
+			width: calc(500 * var(--u) * var(--s));
+			transition: transform 0.3s ease, filter 0.3s ease;
+		}
+		
+		.charcount{
+			position: fixed;
+			height: auto;
+			z-index: 4;
+			bottom: calc(-10 * var(--u));
+			left: calc(400 * var(--u));
+			width: calc(500 * var(--u) * var(--s));
+			transition: transform 0.3s ease, filter 0.3s ease;
+		}
+		
+		.tracker{
+			position: fixed;
+			height: auto;
+			z-index: 4;
+			top: calc(80 * var(--u));
+			right: calc(-50 * var(--u));
+			width: calc(500 * var(--u) * var(--s));
+			transition: transform 0.3s ease, filter 0.3s ease;
+		}
+		
+		.reg{
+			position: fixed;
+			height: auto;
+			z-index: 4;
+			bottom: calc(-10 * var(--u));
+			right: calc(-50 * var(--u));
+			width: calc(500 * var(--u) * var(--s));
+			transition: transform 0.3s ease, filter 0.3s ease;
+		}
+		
+		.perwebicon:hover, .charcount:hover, .tracker:hover, .reg:hover{
+			transform: scale(1.05);
+			animation: goldGlow 1.5s ease-in-out infinite;
+		}
+		
+		@keyframes goldGlow {
+			0%, 100% {
+				filter:
+					drop-shadow(0 0 2px #ffd700)
+					drop-shadow(0 0 6px #ffd700);
+			}
+			50% {
+				filter:
+					drop-shadow(0 0 4px #ffe066)
+					drop-shadow(0 0 12px #ffd700)
+					drop-shadow(0 0 22px rgba(255, 190, 0, 0.9));
+			}
+		}
+
+		/* for tablet */
+		@media (min-width: 768px) and (max-width: 1024px){
+			.perwebicon, .charcount, .tracker, .reg{
+				width: min(calc(500 * var(--u) * var(--s)), 36vw);
+			}
+			.perwebicon, .charcount{ left: 34vw; }
+			.tracker, .reg{ right: -3vw; }
+			.header{ width: min(calc(400 * var(--u) * var(--s)), 32vw); }
+			.laptop{ width: min(calc(250 * var(--u) * var(--s)), 22vw); }
+			.picnote{ width: min(calc(200 * var(--u) * var(--s)), 18vw); }
+			.flower{ width: min(calc(300 * var(--u) * var(--s)), 26vw); }
+		}
+
+		
+		@media (max-width: 767px), (max-height: 500px) and (orientation: landscape){
+			.flower, .picnote, .laptop{
+				display: none;
+			}
+
+			.content{
+				position: relative;
+				z-index: 4;
+				min-height: 100dvh;
+				box-sizing: border-box;
+				padding: 90px 16px 24px;     
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 16px;
+				align-content: center;
+				justify-items: center;
+			}
+
+			.header, .perwebicon, .charcount, .tracker, .reg{
+				position: static;
+				height: auto;
+			}
+
+			.header{
+				order: 0;
+				width: 85%;
+				max-width: 360px;
+			}
+
+			.perwebicon, .charcount, .tracker, .reg{
+				width: 75%;
+				max-width: 320px;
+			}
+
+			.perwebicon{ order: 1; }
+			.charcount{ order: 2; }
+			.tracker{ order: 3; }
+			.reg{ order: 4; }
+		}
+
+		/* for phone */
+		@media (max-height: 500px) and (orientation: landscape){
+			.content{
+				grid-template-columns: repeat(4, 1fr);
+				padding-top: 70px;
+			}
+			.header{
+				grid-column: 1 / -1;
+				width: 40%;
+			}
+			.perwebicon, .charcount, .tracker, .reg{
+				width: 100%;
+			}
+		}
+
+		@media (hover: none){
+			.perwebicon:hover, .charcount:hover, .tracker:hover, .reg:hover{
+				transform: none;
+				animation: none;
+			}
+		}
+		
+	</style>
+</head>
+<body>
+
+
+	<div>
+		<video autoplay muted loop playsinline class="background-video">
+			<source src="complete-bg.mp4" type="video/mp4">
+		</video>
+	</div>
+
+	<main class="content">
+		<img src="flower.png" class="flower" alt="flower">
+		<img src="picnote.png" class="picnote" alt="picnote">
+		<img src="header.png" class="header" alt="header">
+		<img src="laptop.png" class="laptop" alt="laptop">
+		<img src="perwebicon.png" class="perwebicon" alt="perwebicon">
+		<img src="charcount.png" class="charcount" alt="charcount">
+		<img src="tracker.png" class="tracker" alt="tracker">
+		<img src="reg.png" class="reg" alt="reg">
+	</main>
+</body>
+</html>
