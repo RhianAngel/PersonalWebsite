@@ -143,21 +143,9 @@
 			}
 		}
 
-		/* for tablet */
-		@media (min-width: 768px) and (max-width: 1024px){
-			.perwebicon, .charcount, .tracker, .reg{
-				width: min(calc(500 * var(--u) * var(--s)), 36vw);
-			}
-			.perwebicon, .charcount{ left: 34vw; }
-			.tracker, .reg{ right: -3vw; }
-			.header{ width: min(calc(400 * var(--u) * var(--s)), 32vw); }
-			.laptop{ width: min(calc(250 * var(--u) * var(--s)), 22vw); }
-			.picnote{ width: min(calc(200 * var(--u) * var(--s)), 18vw); }
-			.flower{ width: min(calc(300 * var(--u) * var(--s)), 26vw); }
-		}
-
-		
-		@media (max-width: 767px), (max-height: 500px) and (orientation: landscape){
+		/* ========== TABLET + PHONE (shared one-column layout) ========== */
+		/* these are the TABLET sizes (a little bigger); the phone block below shrinks them */
+		@media (max-width: 1024px), (max-height: 500px) and (orientation: landscape){
 			.flower, .picnote, .laptop{
 				display: none;
 			}
@@ -167,10 +155,10 @@
 				z-index: 4;
 				min-height: 100dvh;
 				box-sizing: border-box;
-				padding: 90px 16px 24px;     
+				padding: calc(var(--nav-h) + 40px) 24px 40px;
 				display: grid;
 				grid-template-columns: 1fr;
-				gap: 16px;
+				gap: 24px;
 				align-content: center;
 				justify-items: center;
 			}
@@ -180,15 +168,16 @@
 				height: auto;
 			}
 
+			/* ---- TABLET SIZES: change these numbers to fine-tune ---- */
 			.header{
 				order: 0;
-				width: 85%;
-				max-width: 360px;
+				width: 60%;
+				max-width: 480px;
 			}
 
 			.perwebicon, .charcount, .tracker, .reg{
-				width: 75%;
-				max-width: 320px;
+				width: 60%;
+				max-width: 440px;
 			}
 
 			.perwebicon{ order: 1; }
@@ -197,7 +186,25 @@
 			.reg{ order: 4; }
 		}
 
-		/* for phone */
+		/* ========== PHONE ONLY (smaller sizes) ========== */
+		@media (max-width: 767px), (max-height: 500px) and (orientation: landscape){
+			.content{
+				padding: 90px 16px 24px;
+				gap: 16px;
+			}
+
+			.header{
+				width: 85%;
+				max-width: 360px;
+			}
+
+			.perwebicon, .charcount, .tracker, .reg{
+				width: 75%;
+				max-width: 320px;
+			}
+		}
+
+		/* phone turned sideways: four icons in a row */
 		@media (max-height: 500px) and (orientation: landscape){
 			.content{
 				grid-template-columns: repeat(4, 1fr);
