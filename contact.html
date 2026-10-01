@@ -116,7 +116,9 @@
 			right: calc(120 * var(--u));
 		}
 
-		@media (max-width: 768px){
+		/* ========== TABLET + PHONE (shared one-column layout) ========== */
+		/* these are the TABLET sizes (a little bigger); the phone block below shrinks them */
+		@media (max-width: 1024px){
 
 			/* let the page scroll normally */
 			html, body{
@@ -132,9 +134,9 @@
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-				gap: 16px;
+				gap: 24px;
 				box-sizing: border-box;
-				padding: 90px 16px 40px;   
+				padding: calc(var(--nav-h) + 40px) 24px 56px;
 			}
 
 			.content img.cheader,
@@ -144,56 +146,42 @@
 				right: auto;
 				bottom: auto;
 				left: auto;
+				transform: none;
 				z-index: auto;
 				height: auto;
 			}
 
+			/* ---- TABLET SIZES: change these numbers to fine-tune ---- */
 			.content img.cheader{
 				order: 0;
+				width: 55%;
+				max-width: 460px;
+			}
+
+			.content img.contact{
+				order: 1;
+				width: 85%;
+				max-width: 760px;
+			}
+		}
+
+		/* ========== PHONE ONLY (smaller sizes) ========== */
+		@media (max-width: 767px){
+			.content{
+				gap: 16px;
+				padding: 90px 16px 40px;
+			}
+
+			.content img.cheader{
 				width: 70%;
 				max-width: 320px;
 			}
 
 			.content img.contact{
-				order: 1;
 				width: 95%;
 				max-width: 500px;
 			}
 		}
-		
-	
-		@media (min-width: 769px) and (max-width: 1024px){
-
-		.cheader{
-			width: calc(300 * var(--u) * var(--s));
-		}
-
-		.contact{
-			left: 50%;
-			transform: translateX(-50%);
-			top: calc(70 * var(--u));
-			width: calc(500 * var(--u) * var(--s));
-		}
-
-		
-		.dried{
-			width: calc(110 * var(--u) * var(--s));
-			right: calc(60 * var(--u));
-		}
-
-		.lastnote{
-			width: calc(110 * var(--u) * var(--s));
-			right: calc(40 * var(--u));
-		}
-
-		.sunflower{
-			width: calc(240 * var(--u) * var(--s));
-		}
-
-		.heart{
-			width: calc(140 * var(--u) * var(--s));
-		}
-	}
 	</style>
 </head>
 <body>
