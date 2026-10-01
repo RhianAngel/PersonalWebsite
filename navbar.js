@@ -3,7 +3,7 @@
    Works when you open the files directly (no server needed). */
 
 const NAV_LINKS = [
-	{ label: 'HOME',      href: 'pagehome.html' },
+	{ label: 'HOME',      href: 'index.html' },
 	{ label: 'ABOUT ME',  href: 'pageabout.html' },
 	{ label: 'PORTFOLIO', href: 'portfolio.html' },
 	{ label: 'GALLERY',   href: 'gallery.html' },
