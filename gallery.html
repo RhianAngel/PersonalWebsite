@@ -169,8 +169,9 @@
 			animation: slideLeftBack 1s ease-in-out;
 		}
 
-	
-		@media (max-width: 768px){
+		/* ========== TABLET + PHONE (shared 2-column layout) ========== */
+		/* these are the TABLET sizes (a little bigger); the phone block below shrinks them */
+		@media (max-width: 1024px){
 
 			/* let the page scroll normally */
 			html, body{
@@ -178,22 +179,21 @@
 				min-height: 100%;
 			}
 
-		
 			.bottom, .gnote, .vinyl, .arm, .night{
 				display: none;
 			}
 
-
 			.content{
 				display: grid;
 				grid-template-columns: repeat(2, 1fr);
-				gap: 16px 12px;
+				gap: 24px 20px;
 				align-items: center;
 				justify-items: center;
 				box-sizing: border-box;
-				padding: 90px 16px 40px;   
+				max-width: 860px;
+				margin: 0 auto;
+				padding: calc(var(--nav-h) + 40px) 24px 56px;
 			}
-
 
 			.content img{
 				position: static;
@@ -207,14 +207,13 @@
 				height: auto;
 			}
 
-	
+			/* ---- TABLET SIZES: change these numbers to fine-tune ---- */
 			.content img.rhia{
 				grid-column: 1 / -1;
-				width: 70%;
-				max-width: 320px;
-				margin-bottom: 8px;
+				width: 55%;
+				max-width: 420px;
+				margin-bottom: 12px;
 			}
-
 
 			.content img.rhia{ order: 0; }
 			.content img.g1,
@@ -224,6 +223,21 @@
 			.content img.g5,
 			.content img.g6{
 				order: 1;
+			}
+		}
+
+		/* ========== PHONE ONLY (smaller sizes) ========== */
+		@media (max-width: 767px){
+			.content{
+				max-width: none;
+				gap: 16px 12px;
+				padding: 90px 16px 40px;
+			}
+
+			.content img.rhia{
+				width: 70%;
+				max-width: 320px;
+				margin-bottom: 8px;
 			}
 		}
 	</style>
