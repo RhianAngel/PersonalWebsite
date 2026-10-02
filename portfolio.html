@@ -123,8 +123,17 @@
 			width: calc(500 * var(--u) * var(--s));
 			transition: transform 0.3s ease, filter 0.3s ease;
 		}
+
+		/* Images inside the link wrappers fill the link */
+		.charcount img, .tracker img, .reg img{
+			width: 100%;
+			height: auto;
+			display: block;
+		}
 		
-		.perwebicon:hover, .charcount:hover, .tracker:hover, .reg:hover{
+		/* Hover (desktop) and tapped (phone/tablet) share the same effect */
+		.perwebicon:hover, .charcount:hover, .tracker:hover, .reg:hover,
+		.perwebicon.tapped, .charcount.tapped, .tracker.tapped, .reg.tapped{
 			transform: scale(1.05);
 			animation: goldGlow 1.5s ease-in-out infinite;
 		}
@@ -216,8 +225,10 @@
 			}
 		}
 
+		/* On touch devices, ignore sticky :hover so only taps trigger the effect */
 		@media (hover: none){
-			.perwebicon:hover, .charcount:hover, .tracker:hover, .reg:hover{
+			.perwebicon:hover:not(.tapped), .charcount:hover:not(.tapped),
+			.tracker:hover:not(.tapped), .reg:hover:not(.tapped){
 				transform: none;
 				animation: none;
 			}
@@ -241,20 +252,47 @@
 		<img src="laptop.png" class="laptop" alt="laptop">
 		
 		<a href="index.html">
-		<img src="perwebicon.png" class="perwebicon" alt="perwebicon">
+			<img src="perwebicon.png" class="perwebicon" alt="perwebicon">
 		</a>
 		
-		<a href="characterCounter.html">
-		<img src="charcount.png" class="charcount" alt="charcount">
+		<a href="characterCounter.html" class="charcount">
+			<img src="charcount.png" alt="charcount">
 		</a>
 		
-		<a href="Group5Act.html">
-		<img src="tracker.png" class="tracker" alt="tracker">
+		<a href="Group5Act.html" class="tracker">
+			<img src="tracker.png" alt="tracker">
 		</a>
 		
-		<a href="Manaloto_Rhian_Table.html">
-		<img src="reg.png" class="reg" alt="reg">
+		<a href="Manaloto_Rhian_Table.html" class="reg">
+			<img src="reg.png" alt="reg">
 		</a>
 	</main>
+
+	<script>
+		document.querySelectorAll('main.content a').forEach(link => {
+			link.addEventListener('click', e => {
+				// Only delay on touch devices; desktop keeps normal hover + instant click
+				if (!window.matchMedia('(hover: none)').matches) return;
+
+				e.preventDefault();
+
+				// The first link has its class on the <img>, the others on the <a>
+				const target = link.matches('.charcount, .tracker, .reg')
+					? link
+					: link.querySelector('img');
+
+				target.classList.add('tapped');
+
+				setTimeout(() => {
+					window.location.href = link.href;
+				}, 600);
+			});
+		});
+
+		// Reset the effect if the page is restored via the back button
+		window.addEventListener('pageshow', () => {
+			document.querySelectorAll('.tapped').forEach(el => el.classList.remove('tapped'));
+		});
+	</script>
 </body>
 </html>
