@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Student Registration System</title>
+	
+	<style>
+	
+		body{
+			margin: 0;
+			font-family: Arial, sans-serif;
+			background-color: #FFFAF0;
+		}
+		
+		header{
+			background-color: #F8C463;
+			color: #E03F4F;
+			text-align: center;
+			padding: 20px;
+		}
+		
+		header h1{
+			margin: 0;
+		}
+		
+		header p{
+			margin: 5px;
+		}
+		
+		.container{
+			width: 90%
+			margin: 25px auto;
+		}
+		
+		.content{
+			display: flex;
+			gap: 25px;
+			justify-content: space-around;
+		}
+		
+		.form{
+			background-color: white;
+			padding: 20px;
+			flex: 1;
+			border: 2px solid #81912F;
+			border-radius: 8px;
+			margin-top: 10px;
+		}
+		
+		.form h2{
+			color: #E03F4F;
+		}
+		
+		label{
+			display: block;
+			margin-top: 12px;
+			margin-bottom: 5px;
+			font-weight: bold;
+		}
+		
+		input{
+			width: 100%;
+			padding: 9px;
+			box-sizing: border-box;
+			border: 1px solid #81912F;
+		}
+		
+		select{
+			width: 100%;
+			padding: 9px;
+			box-sizing: border-box;
+			border: 1px solid #81912F;
+		}
+		
+		.gender{
+			display: flex;
+			gap: 15px;
+		}
+		
+		.gender input{
+			width: auto;
+		}
+		
+		.gender label{
+			font-weight: normal;
+		}
+		
+		button{
+			margin-top: 20px;
+			padding: 10px 20px;
+			background-color: #81912F;
+			color: #FFFAF0;
+			border: none;
+		}
+		
+		.tablebox{
+			background-color: white;
+			padding: 20px;
+			flex: 2;
+			overflow: auto;
+			border-radius: 8px;
+			margin-top: 10px;
+			border:2px solid #81912F;
+		}
+		
+		.tablebox h2{
+			color: #E03F4F;
+		}
+		
+		.tablebox thead{
+			background-color:#81912F;
+			color: #FFFAF0;
+		}
+		
+		table{
+			width: 100%;
+			border-collapse: collapse;
+		}
+		
+		caption{
+			font-size: 20px;
+			font-weight: bold;
+			margin-bottom: 10px;
+			color: #E03F4F;
+		}
+		
+		th{
+			backgroun-color: #F8C463;
+			color:  #FFFAF0;
+			padding: 12px;
+		}
+		
+		td{
+			padding: 12px;
+			border: 1px solid #81912F;
+		}
+		
+		footer{
+			background-color:#F8C463;
+			color: #FFFAF0;
+			text-align: center;
+			padding: 15px;
+			margin-top:25px;
+		}
+		
+		@media screen and (max-width: 800px){
+			.content{
+				flex-direction: column;
+			}
+			
+			.form{
+				width: 100%;
+				box-sizing: border-box;
+			}
+			
+			.tablebox{
+				width: 100%;
+				box-sizing: border-box;
+			}
+			
+			table{
+				min-width: 700px;
+			}
+		}
+	
+	</style>
+</head>
+<body>
+
+	<header>
+		<h1>Student Registration System</h1>
+		<p>Please complete the registration below.</p>
+	</header>
+	
+	<div class="container">
+	
+	<div class="content">
+	
+	<div class="form">
+		
+	<h2>Student Registration</h2>
+	
+	<hr>
+	
+	<form>
+			
+		<label for="name">Full Name:</label><br>
+		<input type="text" id="name"
+			placeholder="Enter your full name">
+			
+			<br><br>
+			
+			<label for="email">Email Address:</label><br>
+		<input type="text" id="email"
+			placeholder="name@gmail.com">
+			
+			<br><br>
+			
+		<label for="studentID">Student ID:</label><br>
+		<input type="text" id="studentID"
+			placeholder="Enter Student ID">
+			
+			<br><br>
+		
+		<label for="course">Course:</label><br>
+		<select id="course" name="course">
+			<option value="" disabled selected>--Select Course--</option>
+			<option>BS Computer Science</option>
+			<option>BS Information Technology</option>
+			<option>BS Computer Engineering</option>
+			<option>BS Information Systems</option>
+			<option>BS Electronics and Communication Engineering</option>
+		</select>
+		
+		<br><br>
+		
+		<label>Gender:</label><br>
+		<div class="gender">
+		<label>
+			<input type="radio" name="gender">
+			Male
+		</label>
+		<label>
+			<input type="radio" name="gender">
+			Female
+		</label>
+		</div>
+		
+		<br><br>
+		
+		<label for="message">Message:</label> <br>
+		<textarea 
+			id="message" 
+			name="message" 
+			rows="4"
+			cols="40"
+			placeholder="Enter your message..."></textarea>
+			
+			<br><br>
+			
+		<button type="submit">Register</button>
+		<button type="reset">Clear</button>
+		
+		</div>
+		
+		<div class="tablebox">
+		<h2>Registered Students</h2>
+		<hr>
+		
+		<table>
+			<caption>Student Information</caption>
+			
+			<thead>
+				<tr>
+					<td>Student ID</td>
+					<td>Name</td>
+					<td>Course</td>
+					<td>Email</td>
+					<td>Status</td>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr>
+					<td>2026-001</td>
+					<td>Gian Patrick U. Mendoza</td>
+					<td>BS Information Technology</td>
+					<td>gian@gmail.com</td>
+					<td>Active</td>
+				</tr>
+				
+				<tr>
+					<td>2026-002</td>
+					<td>Rhian Angel L. Manaloto</td>
+					<td>BS Computer Science</td>
+					<td>rhianangel@gmail.com</td>
+					<td>Active</td>
+				</tr>
+				
+				<tr>
+					<td>2026-003</td>
+					<td>Axel Ace M. Fernandez</td>
+					<td>BS Computer Engineer</td>
+					<td>aace@gamil.com</td>
+					<td>Pending</td>
+				</tr>
+				
+				<tr>
+					<td>2026-004</td>
+					<td>John Chester P. Santos</td>
+					<td>BS Information Systems</td>
+					<td>jc@gmail.com</td>
+					<td>Active</td>
+				</tr>
+				
+				<tr>
+					<td>2026-005</td>
+					<td>Flora M. Lara</td>
+					<td>BS Information Technology</td>
+					<td>flora@gmail.com</td>
+					<td>Active</td>
+				</tr>
+				
+				<tr>
+					<td>2026-006</td>
+					<td>Marlon De Ocampo</td>
+					<td>BS Electronics and Communication Engineering</td>
+					<td>mardo@gmail.com</td>
+					<td>Active</td>
+				</tr>
+				
+				<tr>
+					<td>2026-007</td>
+					<td>Atisha Reign M. Aldabe</td>
+					<td>BS Computer Science</td>
+					<td>atishar@gmail.com</td>
+					<td>Pending</td>
+				</tr>
+				
+				<tr>
+					<td>2026-008</td>
+					<td>Carlynn Rae M. Gomez</td>
+					<td>BS Information Systems</td>
+					<td>carrae@gmail.com</td>
+					<td>Active</td>
+				</tr>
+			</tbody>
+			
+		</table>
+	</div>
+</div>
+</div>
+
+<footer>
+	<p>Rhian Angel L. Manaloto | 2-CS3</p>
+</footer>
+		
+</body>
+</html>

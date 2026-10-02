@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<head>
+<title>Class Attendance - JavaScript Array and Loop</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #fdece1;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #7a1f1f;
+        margin-bottom: 30px;
+    }
+
+    .form-box{
+        background-color: #f7d3b8;
+        border-radius: 6px;
+        padding: 25px;
+        max-width: 700px;
+        margin: 0 auto 25px auto;
+    }
+	
+	.output {
+        background-color: #f7d3b8;
+        border-radius: 6px;
+        padding: 25px;
+        max-width: 700px;
+        margin: 0 auto 25px auto;
+    }
+
+    .form-box label {
+        font-size: 16px;
+        color: #333;
+    }
+
+    .form-box input{
+        padding: 8px;
+        font-size: 15px;
+        width: 250px;
+        margin-left: 10px;
+        border: 1px solid #999;
+        border-radius: 4px;
+    }
+
+    .form-box button {
+        background-color: #7a1f1f;
+        color: #fff;
+        border: none;
+        padding: 9px 18px;
+        margin-left: 10px;
+        font-size: 15px;
+        border-radius: 6px;
+    }
+
+    .form-box button:hover {
+        background-color: #5c1616;
+    }
+
+    .output h2 {
+        text-align: center;
+        color: #7a1f1f;
+        margin-bottom: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #fdece1;
+		border: 1px solid #7a1f1f;
+    }
+
+    th {
+        padding: 10px 14px;
+        text-align: left;
+        color: #333;
+		border: 1px solid #7a1f1f;
+		background-color: #e8b48c;
+        color: #7a1f1f;
+    }
+	
+	 td {
+        padding: 10px 14px;
+        text-align: left;
+        color: #333;
+		border: 1px solid #7a1f1f;
+    }
+
+</style>
+</head>
+<body>
+
+    <h1>Class Attendance - JavaScript<br>Array and Loop</h1>
+
+    <div class="form-box">
+        <label for="name">Enter Student Name:</label>
+        <input type="text" id="name" placeholder="">
+        <button onclick="showStudent()">Add Student</button>
+    </div>
+
+    <div class="output">
+        <h2>Attendance List:</h2>
+        <table id="attendanceTable">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Time</th>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+
+        let student = [];
+
+        function showStudent(){
+
+            let name = document.getElementById("name").value;
+
+            if(name === ""){
+                alert("Please fill up the name.");
+            } else {
+                let time = new Date().toLocaleTimeString();
+                student.push({ name: name, time: time });
+                document.getElementById("name").value = "";
+            }
+			
+            let table = document.getElementById("attendanceTable");
+
+            table.innerHTML = `
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Time</th>
+                </tr>
+            `;
+
+            for(let i = 0; i < student.length; i++){
+                let row = table.insertRow();
+                row.insertCell(0).innerText = i + 1;
+                row.insertCell(1).innerText = student[i].name;
+                row.insertCell(2).innerText = student[i].time;
+            }
+        }
+
+    </script>
+
+</body>
+</html>

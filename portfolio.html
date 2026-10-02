@@ -143,8 +143,7 @@
 			}
 		}
 
-		/* ========== TABLET + PHONE (shared one-column layout) ========== */
-		/* these are the TABLET sizes (a little bigger); the phone block below shrinks them */
+
 		@media (max-width: 1024px), (max-height: 500px) and (orientation: landscape){
 			.flower, .picnote, .laptop{
 				display: none;
@@ -167,8 +166,7 @@
 				position: static;
 				height: auto;
 			}
-
-			/* ---- TABLET SIZES: change these numbers to fine-tune ---- */
+			
 			.header{
 				order: 0;
 				width: 60%;
@@ -186,7 +184,7 @@
 			.reg{ order: 4; }
 		}
 
-		/* ========== PHONE ONLY (smaller sizes) ========== */
+
 		@media (max-width: 767px), (max-height: 500px) and (orientation: landscape){
 			.content{
 				padding: 90px 16px 24px;
@@ -203,8 +201,7 @@
 				max-width: 320px;
 			}
 		}
-
-		/* phone turned sideways: four icons in a row */
+		
 		@media (max-height: 500px) and (orientation: landscape){
 			.content{
 				grid-template-columns: repeat(4, 1fr);
@@ -242,10 +239,22 @@
 		<img src="picnote.png" class="picnote" alt="picnote">
 		<img src="header.png" class="header" alt="header">
 		<img src="laptop.png" class="laptop" alt="laptop">
+		
+		<a href="index.html">
 		<img src="perwebicon.png" class="perwebicon" alt="perwebicon">
+		</a>
+		
+		<a href="characterCounter.html">
 		<img src="charcount.png" class="charcount" alt="charcount">
+		</a>
+		
+		<a href="Group5Act.html">
 		<img src="tracker.png" class="tracker" alt="tracker">
+		</a>
+		
+		<a href="Manaloto_Rhian_Table.html">
 		<img src="reg.png" class="reg" alt="reg">
+		</a>
 	</main>
 </body>
 </html>
