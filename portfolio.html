@@ -124,14 +124,14 @@
 			transition: transform 0.3s ease, filter 0.3s ease;
 		}
 
-		/* Images inside the link wrappers fill the link */
-		.charcount img, .tracker img, .reg img{
+
+		.perwebicon img, .charcount img, .tracker img, .reg img{
 			width: 100%;
 			height: auto;
 			display: block;
 		}
 		
-		/* Hover (desktop) and tapped (phone/tablet) share the same effect */
+		
 		.perwebicon:hover, .charcount:hover, .tracker:hover, .reg:hover,
 		.perwebicon.tapped, .charcount.tapped, .tracker.tapped, .reg.tapped{
 			transform: scale(1.05);
@@ -225,7 +225,7 @@
 			}
 		}
 
-		/* On touch devices, ignore sticky :hover so only taps trigger the effect */
+
 		@media (hover: none){
 			.perwebicon:hover:not(.tapped), .charcount:hover:not(.tapped),
 			.tracker:hover:not(.tapped), .reg:hover:not(.tapped){
@@ -276,12 +276,8 @@
 
 				e.preventDefault();
 
-				// The first link has its class on the <img>, the others on the <a>
-				const target = link.matches('.charcount, .tracker, .reg')
-					? link
-					: link.querySelector('img');
-
-				target.classList.add('tapped');
+				// All four classes now sit on the <a>, so the link itself gets the effect
+				link.classList.add('tapped');
 
 				setTimeout(() => {
 					window.location.href = link.href;
