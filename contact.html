@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Contact</title>
 
-	<!-- shared navbar: same 2 lines on EVERY page -->
+
 	<link rel="stylesheet" href="navbar.css">
 	<script src="navbar.js" defer></script>
 
@@ -116,8 +116,7 @@
 			right: calc(120 * var(--u));
 		}
 
-		/* ========== TABLET + PHONE (shared one-column layout) ========== */
-		/* these are the TABLET sizes (a little bigger); the phone block below shrinks them */
+
 		@media (max-width: 1024px){
 
 			/* let the page scroll normally */
@@ -151,7 +150,7 @@
 				height: auto;
 			}
 
-			/* ---- TABLET SIZES: change these numbers to fine-tune ---- */
+
 			.content img.cheader{
 				order: 0;
 				width: 55%;
@@ -160,12 +159,12 @@
 
 			.content img.contact{
 				order: 1;
-				width: 85%;
+				width: 90%;
 				max-width: 760px;
 			}
 		}
 
-		/* ========== PHONE ONLY (smaller sizes) ========== */
+
 		@media (max-width: 767px){
 			.content{
 				gap: 16px;
@@ -178,7 +177,7 @@
 			}
 
 			.content img.contact{
-				width: 95%;
+				width: 100%;
 				max-width: 500px;
 			}
 		}
